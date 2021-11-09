@@ -23,14 +23,15 @@ export class ProfileService {
       .get<IResponse<Profile>>(`${environment.provider}${params ?? ''}`)
       .toPromise();
 
-    if (this._profiles.some(a => result.data.some(b => a.id == b.id))) {
-      console.log('exists')
-      result.data.forEach(a => {
-        const update = this._profiles.find(b => b.id == a.id);
-        Object.keys(update)?.forEach(key => update[key] = a[key]);
+    if (this._profiles && this._profiles?.length > 0) {
+      result.data.slice().forEach(update => {
+        const index = this._profiles.findIndex(item => item.id == update.id);
+        if (index > -1) {
+          this._profiles.splice(index, 1, update);
+        }
       })
     }
-    else this._profiles = this._profiles ? this._profiles.concat(result.data) : result.data;
+    else this._profiles = result.data;
 
     this.$profiles.next(this._profiles.slice());
     return result;
@@ -74,8 +75,8 @@ export class ProfileService {
     if (profiles) {
       profiles?.forEach(async profile => {
         await this.http.put<Profile>(environment.provider, profile).toPromise();
-        const select = this._profiles.find(x => x.id == profile.id);
-        Object.keys(select).forEach(key => select[key] = profile[key] ?? select[key]);
+        const index = this._profiles.findIndex(x => x.id == profile.id);
+        this._profiles.splice(index, 1, profile)
       });
       this.$profiles.next(this._profiles.slice());
     }

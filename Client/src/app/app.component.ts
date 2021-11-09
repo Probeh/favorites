@@ -13,14 +13,16 @@ export class AppComponent implements OnInit, OnDestroy, DoCheck {
   private _subscriptions: Subscription[];
   // ============================= //
   public profiles: Profile[] = [];
+  public favorites: Profile[] = [];
   // ============================= //
   constructor(private service: ProfileService) {
-    this.service.fetchProfiles({ per_Page: 20 });
-
+    this.initialize()
     const sub = this.service.getProfiles().subscribe({
       next: (result: Profile[]) => {
-        console.log(result)
-        this.profiles = result
+        this.profiles = result;
+        this.favorites = result.slice()
+          .filter(x => x.isFavorite)
+          .sort((a, b) => a.id + b.id);
       }
     });
     this._subscriptions = [sub];
@@ -29,11 +31,10 @@ export class AppComponent implements OnInit, OnDestroy, DoCheck {
   ngDoCheck() { }
   ngOnDestroy() { this._subscriptions?.forEach(x => x.unsubscribe()); }
   // ============================= //
-  public getFavorites() {
-    return this.profiles.slice()
-      .filter(x => x.isFavorite)
-      .sort((a, b) => a.id + b.id);
+  private async initialize() {
+    this.profiles = (await this.service.fetchProfiles({ per_Page: 20 })).data;
   }
+  // ============================= //
   public updateProfile(profile: Profile) {
     this.service.updateProfiles(profile);
   }

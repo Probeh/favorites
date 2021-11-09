@@ -1,8 +1,5 @@
 <app-header></app-header>
-<app-favorites
-	[favorites]="this.getFavorites()"
-	(onFavoriteChanged)="this.updateProfile($event)"
-></app-favorites>
+<app-favorites></app-favorites>
 <div class="container">
 	<router-outlet></router-outlet>
 </div>

@@ -1,6 +1,7 @@
 import { Subscription } from 'rxjs'
-import { Component, DoCheck, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angular/core'
+import { Component, DoCheck, OnDestroy, OnInit } from '@angular/core'
 import { Profile } from '@models/profile'
+import { ProfileService } from '@services/profile.service'
 
 @Component({
   selector: 'app-favorites',
@@ -11,16 +12,21 @@ export class FavoritesComponent implements OnInit, OnDestroy, DoCheck {
   // ============================= //
   private _subscriptions: Subscription[];
   // ============================= //
-  @Output() public onFavoriteChanged: EventEmitter<Profile> = new EventEmitter();
-  @Input() public favorites: Profile[];
+  public favorites: Profile[] = [];
   // ============================= //
-  constructor() { }
+  constructor(private service: ProfileService) {
+    const sub = this.service.getFavorites().subscribe({
+      next: (result: Profile[]) => this.favorites = result
+    });
+    this._subscriptions = [sub];
+  }
   ngOnInit() { }
   ngDoCheck() { }
   ngOnDestroy() { this._subscriptions?.forEach(x => x.unsubscribe()); }
   // ============================= //
   public toggleFavorite(profile: Profile) {
     profile.isFavorite = !profile.isFavorite;
-    this.onFavoriteChanged.next(profile);
+    this.service.updateProfiles(profile);
+
   }
 }
