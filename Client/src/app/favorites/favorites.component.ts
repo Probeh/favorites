@@ -20,6 +20,7 @@ export class FavoritesComponent implements OnInit, OnDestroy, DoCheck {
   ngOnDestroy() { this._subscriptions?.forEach(x => x.unsubscribe()); }
   // ============================= //
   public toggleFavorite(profile: Profile) {
-    this.onFavoriteChanged.next(profile.update({ isFavorite: !profile.isFavorite }));
+    profile.isFavorite = !profile.isFavorite;
+    this.onFavoriteChanged.next(profile);
   }
 }
