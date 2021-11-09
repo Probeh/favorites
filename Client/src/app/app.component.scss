@@ -1,0 +1,15 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  flex: auto;
+  justify-content: space-between;
+  overflow: hidden;
+  max-height: 100vh;
+  min-height: 100vh;
+}
+.container {
+  flex: auto;
+  justify-content: space-between;
+  overflow: auto;
+  z-index: 100;
+}

@@ -1,0 +1,1 @@
+rmdir Migrations /s & clear & dotnet clean & dotnet ef database drop

@@ -1,0 +1,38 @@
+@import "bootstrap";
+:host {
+  @extend .card, .shadow;
+
+  align-items: center;
+  background: white;
+  display: flex;
+  flex-direction: column;
+  flex: auto;
+  justify-content: space-between;
+  overflow: hidden;
+}
+.container {
+  padding: 20px;
+  display: flex;
+  flex: auto;
+  flex-direction: column;
+  justify-content: center;
+}
+.fa-heart {
+  color: red;
+}
+.column {
+  align-items: center;
+  display: flex;
+  flex: auto;
+  justify-content: center;
+  max-height: 45px;
+  min-height: 45px;
+  min-width: max-content;
+  padding: 5px;
+}
+td {
+  padding: 0 !important;
+}
+.table {
+  margin-bottom: 0;
+}

@@ -1,0 +1,13 @@
+@import "bootstrap";
+:host {
+  @extend .card;
+
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  max-height: 200px;
+  min-height: 200px;
+}
+:host:hover {
+  overflow-x: overlay;
+}

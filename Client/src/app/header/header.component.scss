@@ -1,0 +1,17 @@
+@import "bootstrap";
+
+:host {
+  @extend .shadow;
+
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  max-height: 50px;
+  min-height: 50px;
+  padding: 15px;
+  font-size: 25px;
+}
+.btn:hover {
+  @extend .shadow;
+  transition: 250ms ease-in-out;
+}

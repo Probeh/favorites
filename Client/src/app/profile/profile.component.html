@@ -1,0 +1,68 @@
+<div
+	class="jumbo text-center shadow mt-3 mb-3 p-3 bg-light"
+	style="position: relative"
+>
+	<a
+		[routerLink]="['../']"
+		class="btn mt-2"
+		style="position: absolute; left: 0; margin-left: 10px"
+	>
+		<i class="fa fa-arrow-left"></i>
+	</a>
+	<h1>{{ this.profile?.full_name }}</h1>
+</div>
+<div class="row">
+	<div class="col-md-4 col-xs-12">
+		<div class="card">
+			<div class="card-header p-1 bg-info"></div>
+			<div class="card-body">
+				<img [src]="this.profile?.avatar" />
+				<hr />
+				<div class="text-muted">
+					<i class="fa fa-envelope"></i> {{ this.profile?.email }}
+				</div>
+				<div class="text-muted">
+					<i class="fa fa-globe"></i>
+					{{ this.profile?.email.split('@')[0] + '.com' }}
+				</div>
+				<hr />
+				<button class="btn" (click)="this.toggleFavorite()">
+					<i
+						[ngClass]="
+							this.profile?.isFavorite
+								? 'fa fa-heart text-red'
+								: 'fa fa-heart-o'
+						"
+					></i>
+				</button>
+				<button class="btn"><i class="fa fa-github"></i></button>
+				<button class="btn"><i class="fa fa-linkedin"></i></button>
+				<button class="btn"><i class="fa fa-facebook"></i></button>
+				<button class="btn"><i class="fa fa-instagram"></i></button>
+				<button class="btn"><i class="fa fa-youtube"></i></button>
+			</div>
+		</div>
+	</div>
+	<div class="col-md-8 col-xs-12">
+		<div class="card h-100 p-3">
+			<h4>Lorem ipsum?</h4>
+			<hr />
+			<p>
+				Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ex doloremque
+				officiis natus explicabo et voluptates vel nisi fuga deserunt, magnam
+				necessitatibus eligendi rem quibusdam eius odio, quos illum nulla
+				deleniti. Lorem ipsum dolor sit amet consectetur adipisicing elit.
+				Voluptates officiis magnam, nostrum, itaque placeat maxime sequi enim
+				saepe unde sunt temporibus voluptate blanditiis vel obcaecati.
+				Temporibus libero repellat deleniti similique! Lorem ipsum dolor, sit
+				amet consectetur adipisicing elit. Quia nisi fugit non, consectetur
+				porro harum sunt aliquid suscipit quibusdam est alias molestias?
+				Quibusdam quas amet consectetur tempore perspiciatis culpa molestiae?
+				Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ab asperiores
+				dolorum cum, ut debitis tempora accusantium quia excepturi at provident
+				labore, animi nemo fuga voluptatem rem? Doloremque assumenda culpa
+				nesciunt!
+			</p>
+		</div>
+	</div>
+</div>

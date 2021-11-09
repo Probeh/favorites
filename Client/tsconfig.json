@@ -1,0 +1,37 @@
+/* To learn more about this file see: https://angular.io/config/tsconfig. */
+{
+	"compileOnSave": false,
+	"compilerOptions": {
+		"baseUrl"                         : "./"            ,
+		"declaration"                     : true            ,
+		"declarationMap"                  : true            ,
+		"downlevelIteration"              : true            ,
+		"experimentalDecorators"          : true            ,
+		"forceConsistentCasingInFileNames": true            ,
+		"importHelpers"                   : true            ,
+		"module"                          : "es2020"        ,
+		"moduleResolution"                : "node"          ,
+		"noFallthroughCasesInSwitch"      : true            ,
+		"noImplicitReturns"               : true            ,
+		"outDir"                          : "./dist/out-tsc",
+		"sourceMap"                       : true            ,
+		"strict"                          : false           ,
+		"target"                          : "es2017"        ,
+		"lib": ["es2018", "dom"],
+		"paths": {
+			"@favorites/*": ["src/app/favorites/*"  ],
+			"@header/*"   : ["src/app/header/*"     ],
+			"@profile/*"  : ["src/app/profile/*"    ],
+			"@search/*"   : ["src/app/search/*"     ],
+			"@helpers/*"  : ["src/shared/helpers/*" ],
+			"@models/*"   : ["src/shared/models/*"  ],
+			"@services/*" : ["src/shared/services/*"],
+			"@shared/*"   : ["src/shared/*"         ],
+			"@config/*"   : ["src/environments/*"   ],
+			"@source/*"   : ["src/app/*"            ]
+		}
+	},
+	"angularCompilerOptions": {
+		"enableI18nLegacyMessageIdFormat": false
+	}
+}

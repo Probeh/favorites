@@ -1,0 +1,1 @@
+ef-drop & ef-build & dotnet watch run
